@@ -1,7 +1,7 @@
 // PRUSA Mendel  
 // X-end with NEMA 17 motor mount
 // GNU GPL v3
-// Josef Průša
+// Josef Pra
 // josefprusa@me.com
 // prusadjs.cz
 // http://www.reprap.org/wiki/Prusa_Mendel
@@ -38,8 +38,7 @@ difference (){
 		}
 		positioned_motor_mount_holes();
 }
-translate([-5,-30,2])scale([2,1,2]) rotate(a=[90,0,0]) linear_extrude(file = "this-way-up.dxf", layer = "l",
-  height = 2, center = true, convexity = 10, twist = -fanrot);
+//translate([-5,-30,2])scale([2,1,2]) rotate(a=[90,0,0]) linear_extrude(file = "this-way-up.dxf", layer = "l", height = 2, center = true, convexity = 10, twist = -fanrot);
 
 
 // GregFrosts stuff
@@ -70,7 +69,7 @@ module positioned_motor_mount()
 				[-bridge_length,-nema17_support_d-bridge_shear*bridge_length,-2.5])
 				multmatrix([[1,0,0],[bridge_shear,1,0],[0,0,1]])
 				cube([bridge_length,nema17_support_d,6]);
-				#
+				
 				render()
 				translate(top_corner+[-thickness,-nema17_support_d,-nema17_support_d/2])
 				intersection()
@@ -129,7 +128,7 @@ module motor_mount ()
 		translate(-nema17_hole_spacing*[1,1,0]/2)
 		barbell (nema17_support_d/2,
 		nema17_support_d/2,20,60,nema17_hole_spacing);
-		% cube([nema17_width,nema17_width,0.1],true);
+		//% cube([nema17_width,nema17_width,0.1],true);
 	}
 }
 
@@ -143,7 +142,7 @@ module motor_mount_holes ()
 		rotate([0,0,90*hole])
 		translate(nema17_hole_spacing*[1,1,0]/2)
 		rotate(360/16)
-		cylinder(h=thickness+2,r=4.4/2,$fn=8);
+		cylinder(h=thickness+2,r=m3_diameter/2 + 0.2,$fn=8);
 		
 		for (hole=[3:5])
 		rotate([0,0,90*hole])
@@ -151,7 +150,7 @@ module motor_mount_holes ()
 		translate([0,0,-24])
 		cylinder(h=25,r=7/2);
 	}
-translate([2.5,-25,0]) #cube([10,20,10]);
+	translate([2,-25,-1]) #cube([10,20,20]);
 }
 
 module barbell (r1,r2,r3,r4,separation) 
@@ -160,7 +159,7 @@ module barbell (r1,r2,r3,r4,separation)
 	x2=[separation,0];
 	x3=triangulate (x1,x2,r1+r3,r2+r3);
 	x4=triangulate (x2,x1,r2+r4,r1+r4);
-	# render()
+	render()
 	difference ()
 	{
 		union()

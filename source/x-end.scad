@@ -102,7 +102,7 @@ module xend(closed_end=true, linear_bearing=false)
 	
 	if(linear_bearing==true) z_linear_bearings();
 	if(linear_bearing==false) z_bushings();	
-difference()
+	difference()
 	{
 		union ()
 		{
@@ -123,9 +123,9 @@ difference()
 		translate([0,10,32.5]) 
 		cube([22.5,22.5,70],center=true);
 
-		translate([0,-10,5+29]) #cube([2,8,10],center=true);
-			translate([0,-10,5+29-11]) #cube([2,8,10],center=true);
-			translate([0,-10,3.25]) #cube([2,8,6.5],center=true);
+		//translate([0,-10,5+29]) #cube([2,8,10],center=true);
+		//	translate([0,-10,5+29-11]) #cube([2,8,10],center=true);
+		//	translate([0,-10,3.25]) #cube([2,8,6.5],center=true);
 
 		//Rod hole.
 		difference()
@@ -137,8 +137,8 @@ difference()
 			translate([0,-20,8.5]) 
 			cylinder(h=4,r=m8_nut_diameter/2+thin_wall,$fn=6,center=true);
 		}
-		translate([0,-20,52-45]) 
-		polyhole(9,90);
+		#translate([0,-20,6.5 + 0.4]) 
+		cylinder(r=m8_diameter / 2,h=10, $fn=32);
 	}
 }
 
@@ -156,7 +156,7 @@ module xendcorners(dia1, dia2, dia3, dia4, height=0)
 }
 //xendcorners(5,5,5,5,0);
 //difference(){
-xend(true);
+xend(true, linear);
 //translate(v = [15, -40, 0]) cube(size = [20,100,20]);
 
 //translate(v = [-15-20, -40, 0]) cube(size = [20,100,20]);

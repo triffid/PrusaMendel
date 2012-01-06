@@ -1,7 +1,7 @@
 // PRUSA Mendel  
 // Bushings
 // GNU GPL v3
-// Josef Průša
+// Josef Pra
 // josefprusa@me.com
 // prusadjs.cz
 // http://www.reprap.org/wiki/Prusa_Mendel
@@ -111,7 +111,7 @@ union(){
 //main block
 translate(v=[-5,0,32.5]) cube(size = [10,20,65], center = true);
 //holder for main block in x-end
-translate(v=[-5,0,15.8/2]) cube(size = [12,23,15.8], center = true);
+translate(v=[-11,23 / -2,0]) cube(size = [8,23,15.8]);
 translate(v=[0,0,0]) cylinder(h = 65, r=10, $fn=60);
 }
 //main axis
